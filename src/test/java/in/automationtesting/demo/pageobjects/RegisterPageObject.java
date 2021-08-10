@@ -15,7 +15,7 @@ public class RegisterPageObject {
     }
 
     public WebElement validacaoTituloDeSiteLabel() {
-        return waitElement.visibilityOf(By.cssSelector("#header > div > div > div > div.col-sm-8.col-xs-8.col-md-8 > h1"));
+        return waitElement.visibilityOf(By.cssSelector("header[id='header'] div[class='row'] h1"));
     }
 
     public WebElement primeiroNomeTextField() {
