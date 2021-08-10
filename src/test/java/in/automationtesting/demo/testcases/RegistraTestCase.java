@@ -14,5 +14,6 @@ public class RegistraTestCase extends BaseTest {
         WebDriver driver = DriverManager.getDriver();
         driver.get(Property.get("url"));
         RegisterStep registerStep = new RegisterStep(driver);
+        registerStep.indexPagina();
     }
 }
