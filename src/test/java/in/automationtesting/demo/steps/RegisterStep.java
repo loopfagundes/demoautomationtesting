@@ -4,7 +4,6 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.service.ExtentTestManager;
 import com.github.javafaker.Faker;
 import in.automationtesting.demo.pageobjects.RegisterPageObject;
-import in.automationtesting.demo.utils.Report;
 import in.automationtesting.demo.utils.Screenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -32,7 +31,9 @@ public class RegisterStep {
         numeroDeTelefone();
         generoDeUsuario();
         hobbies();
-        linguagens();
+        //linguagens(); --> BUG
+        habilidades();
+        selecionaPais();
         return this;
     }
 
@@ -80,6 +81,9 @@ public class RegisterStep {
     }
 
     private RegisterStep linguagens() {
+        /**
+         * O metodo de linguagens e aqui deve ser bug.
+         */
         registerPageObject.linguagensSelectComboBox().click();
         if(registerPageObject.selectLinguagem().isDisplayed()) {
             registerPageObject.selectLinguagem().click();
@@ -87,6 +91,16 @@ public class RegisterStep {
         } else {
             ExtentTestManager.getTest().log(Status.FAIL, "Nao selecionou...Deve ser BUG...", Screenshot.capture());
         }
+        return this;
+    }
+
+    private RegisterStep habilidades() {
+        registerPageObject.skillsComboBox().selectByValue("Java");
+        return this;
+    }
+
+    private RegisterStep selecionaPais() {
+        registerPageObject.selectCountryComboBox().click();
         return this;
     }
 }

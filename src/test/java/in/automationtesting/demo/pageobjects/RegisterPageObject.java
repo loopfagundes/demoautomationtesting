@@ -66,4 +66,12 @@ public class RegisterPageObject {
     public WebElement selectLinguagem() {
         return waitElement.toBeClickable(By.cssSelector("#basicBootstrapForm > div:nth-child(7) > div > multi-select > div:nth-child(2) > ul > li:nth-child(29) > a"));
     }
+
+    public Select skillsComboBox() {
+        return new Select(waitElement.toBeClickable(By.id("Skills")));
+    }
+
+    public WebElement selectCountryComboBox() {
+        return waitElement.toBeClickable(By.cssSelector("#basicBootstrapForm > div:nth-child(10) > div > span > span.selection > span"));
+    }
 }
