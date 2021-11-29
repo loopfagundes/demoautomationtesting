@@ -15,6 +15,10 @@ public class RegisterPageObject {
         waitElement = new WaitElement(_driver);
     }
 
+    public WebElement fechaNoAdsByGoogle() {
+        return waitElement.toBeClickable(By.cssSelector("body > ins:nth-child(8) > ins.ee > span > svg > g > line:nth-child(1)"));
+    }
+
     public WebElement validacaoTituloDeSiteLabel() {
         return waitElement.visibilityOf(By.cssSelector("header[id='header'] div[class='row'] h1"));
     }
@@ -59,19 +63,47 @@ public class RegisterPageObject {
         return waitElement.toBeClickable(By.id("checkbox3"));
     }
 
-    public WebElement linguagensSelectComboBox() {
+    public WebElement linguagensComboBox() {
         return waitElement.toBeClickable(By.id("msdd"));
     }
 
-    public WebElement selectLinguagem() {
+    public WebElement selecionaLinguagem() {
         return waitElement.toBeClickable(By.cssSelector("#basicBootstrapForm > div:nth-child(7) > div > multi-select > div:nth-child(2) > ul > li:nth-child(29) > a"));
     }
 
-    public Select skillsComboBox() {
+    public Select habilidadesComboBox() {
         return new Select(waitElement.toBeClickable(By.id("Skills")));
     }
 
-    public WebElement selectCountryComboBox() {
+    public WebElement selecionaPaisComboBox() {
         return waitElement.toBeClickable(By.cssSelector("#basicBootstrapForm > div:nth-child(10) > div > span > span.selection > span"));
+    }
+
+    public WebElement buscaPaisTextField() {
+        return waitElement.toBeClickable(By.cssSelector("body > span > span > span.select2-search.select2-search--dropdown > input"));
+    }
+
+    public Select anoDeNascimentoComboBox() {
+        return new Select(waitElement.toBeClickable(By.id("yearbox")));
+    }
+
+    public Select mesDeNascimentoComboBox() {
+        return new Select(waitElement.toBeClickable(By.cssSelector("#basicBootstrapForm > div:nth-child(11) > div:nth-child(3) > select")));
+    }
+
+    public Select diaDeNascimentoComboBox() {
+        return new Select(waitElement.toBeClickable(By.id("daybox")));
+    }
+
+    public WebElement senhaTextField() {
+        return waitElement.toBeClickable(By.id("firstpassword"));
+    }
+
+    public WebElement confirmaSenhatextField() {
+        return waitElement.toBeClickable(By.id("secondpassword"));
+    }
+
+    public WebElement enviaButton() {
+        return waitElement.toBeClickable(By.id("submitbtn"));
     }
 }

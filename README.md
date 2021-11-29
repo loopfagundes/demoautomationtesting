@@ -13,8 +13,8 @@ Link: [Demo Automation Testing - Register](http://demo.automationtesting.in/Regi
 - [Maven 3](http://maven.apache.org/download.cgi)
 - [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html),
 - [TestNG 7.4.0](https://mvnrepository.com/artifact/org.testng/testng/7.4.0),
-- [Selenium Java 3.141.59](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/3.141.59),
-- [WebDriverManager 4.4.3](https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager/4.4.3),
+- [Selenium Java 4.1.0](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.1.0),
+- [WebDriverManager 5.0.3](https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager/5.0.3),
 - [ExtentReports TestNG Adapter 1.0.3](https://mvnrepository.com/artifact/com.aventstack/extentreports-testng-adapter/1.0.3),
 - [Java Faker 1.0.2](https://mvnrepository.com/artifact/com.github.javafaker/javafaker/1.0.2),
 ---

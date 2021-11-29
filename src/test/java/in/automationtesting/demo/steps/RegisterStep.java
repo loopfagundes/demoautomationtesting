@@ -5,6 +5,7 @@ import com.aventstack.extentreports.service.ExtentTestManager;
 import com.github.javafaker.Faker;
 import in.automationtesting.demo.pageobjects.RegisterPageObject;
 import in.automationtesting.demo.utils.Screenshot;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -34,6 +35,8 @@ public class RegisterStep {
         //linguagens(); --> BUG
         habilidades();
         selecionaPais();
+        dataDeNascimento();
+        senha();
         return this;
     }
 
@@ -44,6 +47,7 @@ public class RegisterStep {
 
     private RegisterStep imagemDeUsuario() {
         registerPageObject.imagemDeUsuarioButton().sendKeys(FILE_UPDATE);
+        registerPageObject.fechaNoAdsByGoogle().click();
         return this;
     }
 
@@ -84,9 +88,9 @@ public class RegisterStep {
         /**
          * O metodo de linguagens e aqui deve ser bug.
          */
-        registerPageObject.linguagensSelectComboBox().click();
-        if(registerPageObject.selectLinguagem().isDisplayed()) {
-            registerPageObject.selectLinguagem().click();
+        registerPageObject.linguagensComboBox().click();
+        if (registerPageObject.selecionaLinguagem().isDisplayed()) {
+            registerPageObject.selecionaLinguagem().click();
             ExtentTestManager.getTest().log(Status.PASS, "Selecionou uma linguagem.");
         } else {
             ExtentTestManager.getTest().log(Status.FAIL, "Nao selecionou...Deve ser BUG...", Screenshot.capture());
@@ -95,12 +99,35 @@ public class RegisterStep {
     }
 
     private RegisterStep habilidades() {
-        registerPageObject.skillsComboBox().selectByValue("Java");
+        registerPageObject.habilidadesComboBox().selectByValue("Java");
         return this;
     }
 
     private RegisterStep selecionaPais() {
-        registerPageObject.selectCountryComboBox().click();
+        registerPageObject.selecionaPaisComboBox().click();
+        registerPageObject.buscaPaisTextField().sendKeys("Japan");
+        registerPageObject.buscaPaisTextField().sendKeys(Keys.ENTER);
+        return this;
+    }
+
+    private RegisterStep dataDeNascimento() {
+        registerPageObject.anoDeNascimentoComboBox().selectByValue("1991");
+        registerPageObject.mesDeNascimentoComboBox().selectByValue("May");
+        registerPageObject.diaDeNascimentoComboBox().selectByValue("13");
+        return this;
+    }
+
+    private RegisterStep senha() {
+        String chaveSenha;
+        chaveSenha = faker.internet().password();
+        registerPageObject.senhaTextField().sendKeys(chaveSenha);
+        registerPageObject.confirmaSenhatextField().sendKeys(chaveSenha);
+        if (registerPageObject.enviaButton().isDisplayed()) {
+            registerPageObject.enviaButton().click();
+            ExtentTestManager.getTest().log(Status.PASS, "O botao recebe um clique. ");
+        } else {
+            ExtentTestManager.getTest().log(Status.FAIL, "Falhou de registrar.", Screenshot.capture());
+        }
         return this;
     }
 }
